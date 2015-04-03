@@ -34,6 +34,7 @@ Partial Class MainForm
         Me.WebBrowser1.ScrollBarsEnabled = False
         Me.WebBrowser1.Size = New System.Drawing.Size(554, 405)
         Me.WebBrowser1.TabIndex = 0
+        Me.WebBrowser1.Visible = False
         Me.WebBrowser1.WebBrowserShortcutsEnabled = False
         '
         'MainForm
