@@ -22,32 +22,35 @@ Partial Class MainForm
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.WebKitBrowser = New WebKit.WebKitBrowser()
         Me.SuspendLayout()
         '
-        'WebBrowser1
+        'WebKitBrowser
         '
-        Me.WebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebBrowser1.Location = New System.Drawing.Point(0, 0)
-        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.ScrollBarsEnabled = False
-        Me.WebBrowser1.Size = New System.Drawing.Size(554, 405)
-        Me.WebBrowser1.TabIndex = 0
-        Me.WebBrowser1.Visible = False
-        Me.WebBrowser1.WebBrowserShortcutsEnabled = False
+        Me.WebKitBrowser.AllowDrop = True
+        Me.WebKitBrowser.BackColor = System.Drawing.Color.White
+        Me.WebKitBrowser.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.WebKitBrowser.Location = New System.Drawing.Point(0, 0)
+        Me.WebKitBrowser.Name = "WebKitBrowser"
+        Me.WebKitBrowser.PrivateBrowsing = False
+        Me.WebKitBrowser.Size = New System.Drawing.Size(800, 500)
+        Me.WebKitBrowser.TabIndex = 0
+        Me.WebKitBrowser.Url = Nothing
+        Me.WebKitBrowser.UseDefaultContextMenu = False
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(554, 405)
-        Me.Controls.Add(Me.WebBrowser1)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(76, Byte), Integer), CType(CType(175, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(800, 500)
+        Me.Controls.Add(Me.WebKitBrowser)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "MainForm"
         Me.Text = "Index"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents WebBrowser1 As System.Windows.Forms.WebBrowser
+    Friend WithEvents WebKitBrowser As WebKit.WebKitBrowser
 
 End Class
