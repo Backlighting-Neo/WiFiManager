@@ -28,12 +28,13 @@ Partial Class MainForm
         'WebKitBrowser
         '
         Me.WebKitBrowser.AllowDrop = True
+        Me.WebKitBrowser.AllowNewWindows = False
+        Me.WebKitBrowser.AutoScroll = True
         Me.WebKitBrowser.BackColor = System.Drawing.Color.White
-        Me.WebKitBrowser.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebKitBrowser.Location = New System.Drawing.Point(0, 0)
+        Me.WebKitBrowser.Location = New System.Drawing.Point(1, 1)
         Me.WebKitBrowser.Name = "WebKitBrowser"
         Me.WebKitBrowser.PrivateBrowsing = False
-        Me.WebKitBrowser.Size = New System.Drawing.Size(800, 500)
+        Me.WebKitBrowser.Size = New System.Drawing.Size(800, 550)
         Me.WebKitBrowser.TabIndex = 0
         Me.WebKitBrowser.Url = Nothing
         Me.WebKitBrowser.UseDefaultContextMenu = False
@@ -43,11 +44,11 @@ Partial Class MainForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(76, Byte), Integer), CType(CType(175, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(800, 500)
+        Me.ClientSize = New System.Drawing.Size(802, 552)
         Me.Controls.Add(Me.WebKitBrowser)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "MainForm"
-        Me.Text = "Index"
+        Me.Text = "WiFi管家"
         Me.ResumeLayout(False)
 
     End Sub

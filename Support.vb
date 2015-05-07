@@ -21,7 +21,10 @@ Public Class ScriptForWebBrowser
         Shell("explorer.exe https://github.com/Backlighting-Neo/WiFiManager")
     End Sub
 
-#Region "GetVi用来获取虚拟网卡的编号已经适配器名称"
+    Public Sub CloseWindow()
+        End
+    End Sub
+
     '其中编号以返回值的形式返回，名称赋值到virtalname的全局变量
     Public Sub GetVi(ByRef VitrualId As Integer, ByRef VitrualName As String)
         Dim nics() As System.Net.NetworkInformation.NetworkInterface
@@ -59,34 +62,29 @@ Public Class ScriptForWebBrowser
 
         End If
     End Sub
-#End Region
 
-#Region "扫描WiFi，返回JSON格式的WiFi列表"
+
     Public Function ScanWiFi() As String
         Dim ResultString As String = String.Empty
         WiFiControl.ScanSSID()
         ResultString = JsonConvert.SerializeObject(WiFiControl.OutputSSIDS)
+        Return ResultString
+    End Function
 
-        'TODO Testing
-
+    Public Sub ConnectSSID(ssid As String)
         For Each Item In WiFiControl.ssids
-            If Item.SSID = "Backlighting" Then
+            If Item.SSID = ssid Then
                 WiFiControl.ConnectToSSID(Item)
                 Exit For
             End If
         Next
-
-        Return ResultString
-    End Function
-#End Region
+    End Sub
 End Class
 
 
 Public Class MyWifi
 
 #Region "类定义"
-    
-
     Public ssids As New List(Of WIFISSID)()
     Public OutputSSIDS As New List(Of WiFiSSIDForJson)()
 

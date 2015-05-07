@@ -6,5 +6,14 @@ $(document).ready(function(){
 	$('#GithubFork').click(function(){
 		window.external.GetGithub();
 	})
+
+	$('#GithubForkMenu').click(function(){
+		window.external.GetGithub();
+	})
+
+	$('#CloseWindow').click(function(){
+		window.external.CloseWindow();
+	})
 })
+
 
