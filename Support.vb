@@ -1,12 +1,15 @@
 ﻿Imports NativeWifi
 Imports System.Text
 Imports Newtonsoft.Json
+Imports System.IO
 
 <System.Runtime.InteropServices.ComVisible(True)>
 Public Class ScriptForWebBrowser
     Public Declare Function SendMessageA Lib "user32" (ByVal hWnd As Integer, ByVal Msg As Integer, ByVal wParam As Integer, ByVal IParam As Integer) As Boolean
     Public Declare Function ReleaseCapture Lib "user32" Alias "ReleaseCapture" () As Boolean
     Private WiFiControl As New MyWifi
+
+    Private virtal As Integer
 
     Public Sub JavaScriptTesting()
         MsgBox("Testing Sucess")
@@ -25,7 +28,38 @@ Public Class ScriptForWebBrowser
         End
     End Sub
 
-    '其中编号以返回值的形式返回，名称赋值到virtalname的全局变量
+    Public Function GetConsoleReturn(ByVal cmdline As String) As String
+        Shell("cmd.exe /c " & cmdline & " >result.log", vbHide, True)
+        Dim a As Stream
+        a = File.OpenRead(Application.StartupPath & "\result.log")
+        Dim sr As StreamReader = New StreamReader(a, System.Text.Encoding.Default)
+        sr.BaseStream.Seek(0, SeekOrigin.Begin)
+        Dim result As String = String.Empty
+        While (sr.Peek() > -1)
+            result = result + sr.ReadLine() + vbCrLf
+        End While
+        a = Nothing
+        sr.Close()
+        sr = Nothing
+        Kill(Application.StartupPath & "\result.log")
+        Return result
+    End Function
+
+    Public Function GetRv() As Integer
+        Dim nics() As System.Net.NetworkInformation.NetworkInterface
+        nics = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()
+        Return nics(virtal).GetIPv4Statistics.BytesReceived / 1024
+    End Function
+
+    Public Function GetSv() As Integer
+        Dim nics() As System.Net.NetworkInformation.NetworkInterface
+        nics = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()
+        Return nics(virtal).GetIPv4Statistics.BytesSent / 1024
+    End Function
+
+
+
+    '其中编号以VitrualID返回，名称赋值到virtalname的全局变量
     Public Sub GetVi(ByRef VitrualId As Integer, ByRef VitrualName As String)
         Dim nics() As System.Net.NetworkInformation.NetworkInterface
         nics = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()
@@ -59,10 +93,9 @@ Public Class ScriptForWebBrowser
                     End If
                 Next
             End If
-
+            virtal = vi
         End If
     End Sub
-
 
     Public Function ScanWiFi() As String
         Dim ResultString As String = String.Empty
@@ -78,6 +111,17 @@ Public Class ScriptForWebBrowser
                 Exit For
             End If
         Next
+    End Sub
+
+    Public Sub cpl(Command As String)
+        Select Case Command
+            Case "Internet"
+                Shell("control.exe inetcpl.cpl")
+            Case "Firewall"
+                Shell("control.exe Firewall.cpl")
+            Case "Connection"
+                Shell("control.exe ncpa.cpl")
+        End Select
     End Sub
 End Class
 

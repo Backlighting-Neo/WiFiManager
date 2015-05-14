@@ -6,7 +6,7 @@
 '        设置完成后，调用Comomand方法
 '参数  PublicConnection    【必选】用于被共享的公网连接名     例如"本地连接"
 '         PrivateConnection  【必选】用于共享的私网连接名        例如"本机虚拟WiFi"
-'         switch                    【必选】 打开共享/关闭共享             可选值"on"
+'         switch                    【必选】 打开共享/关闭共享             可选值"on","off"
 '作者   逆光 Backlighting
 '日期   2015年01月28日
 '示例   Dim ICS = New WiFi_ICS

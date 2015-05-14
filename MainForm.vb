@@ -21,8 +21,6 @@ Public Class MainForm
         Dim VirtualInterfaceID As Integer, VirtualInterfaceName As String = String.Empty
         Support.GetVi(VirtualInterfaceID, VirtualInterfaceName)
 
-        '在js中已经Scan
-
 
     End Sub
 
